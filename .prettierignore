@@ -1,0 +1,7 @@
+# Ignore artifacts:
+.wrangler
+
+# Ignore some files
+# .prettierrc
+package-lock.json
+worker-configuration.d.ts

@@ -1,18 +1,18 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.toml`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { type Context, type Env, Hono } from 'hono';
+import { cors } from 'hono/cors';
+import { etag } from 'hono/etag';
+import { prisma } from '@/lib/middlewares/prisma';
+import users from '@/routes/users';
 
-export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
-	},
-};
+const app = new Hono<Env>();
+
+// middlewares
+app.use(cors()).use(etag());
+
+app.get('/', (ctx: Context) => {
+	return ctx.json({ message: 'hello' });
+});
+
+app.use('api/*', prisma()).basePath('api').route('/users', users);
+
+export default app;

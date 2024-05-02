@@ -1,6 +1,32 @@
 {
-	"printWidth": 140,
-	"singleQuote": true,
+	"trailingComma": "all",
+	"tabWidth": 4,
+	"useTabs": true,
 	"semi": true,
-	"useTabs": true
+	"singleQuote": true,
+	"bracketSameLine": true,
+	"importOrder": [
+		"^hono.*$",
+		"^@prisma/(.*)$",
+		"<THIRD_PARTY_MODULES>",
+		"^[./]"
+	],
+	"importOrderSeparation": false,
+	"importOrderSortSpecifiers": true,
+	"importOrderGroupNamespaceSpecifiers": true,
+	"importOrderCaseInsensitive": false,
+	"htmlWhitespaceSensitivity": "ignore",
+	"plugins": [
+		"@trivago/prettier-plugin-sort-imports",
+		"prettier-plugin-prisma",
+		"prettier-plugin-toml"
+	],
+	"overrides": [
+		{
+			"files": ["**/*.html"],
+			"options": {
+				"singleQuote": true
+			}
+		}
+	]
 }

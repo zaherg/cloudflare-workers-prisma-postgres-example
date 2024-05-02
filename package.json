@@ -1,19 +1,44 @@
 {
-  "name": "prisma-example",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest",
-    "cf-typegen": "wrangler types"
-  },
-  "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.1.0",
-    "@cloudflare/workers-types": "^4.20240423.0",
-    "typescript": "^5.0.4",
-    "vitest": "1.3.0",
-    "wrangler": "^3.0.0"
-  }
+	"name": "prisma-example",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"cf": "wrangler",
+		"db:generate": "npm run env prisma generate",
+		"db:migrate:deploy": "npm run env prisma migrate deploy",
+		"db:migrate:dev": "npm run env prisma migrate dev",
+		"db:push": "npm run env prisma db push --skip-generate",
+		"db:push-hard": "npm run env prisma db push --skip-generate --accept-data-loss --force-reset",
+		"db:reset": "npm run env prisma migrate reset --force",
+		"db:seed": "npm run env prisma db seed",
+		"deploy": "wrangler deploy --minify src/index.ts",
+		"deploy:pre": "wrangler deploy --dry-run --minify src/index.ts --outdir dist",
+		"dev": "wrangler dev",
+		"env": "dotenv -e ./.dev.vars --",
+		"prisma": "npm run env prisma",
+		"start": "wrangler dev",
+		"style:fix": "prettier . --write",
+		"test": "vitest",
+		"typegen": "wrangler types"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.1.0",
+		"@cloudflare/workers-types": "^4.20240423.0",
+		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
+		"@types/pg": "^8.11.5",
+		"dotenv-cli": "^7.4.1",
+		"prettier": "^3.2.5",
+		"prettier-plugin-prisma": "^5.0.0",
+		"prettier-plugin-toml": "^2.0.1",
+		"prisma": "^5.13.0",
+		"typescript": "^5.0.4",
+		"vitest": "1.3.0",
+		"wrangler": "^3.0.0"
+	},
+	"dependencies": {
+		"@prisma/adapter-pg": "^5.13.0",
+		"@prisma/client": "^5.13.0",
+		"hono": "^4.2.9",
+		"pg": "^8.11.5"
+	}
 }
