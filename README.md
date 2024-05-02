@@ -35,16 +35,28 @@ DIRECT_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=publi
 
 3. Update the `prisma/schema.prisma` file to include all the models you need.
 
+> [!note]
+> It is important that you have a look at the `script` section as it has multiple commands that will help you with your development.
+
 4. Using Prisma's CLI, create a migration from changes in Prisma schema, apply it to the database, trigger generators (e.g. Prisma Client)
 
 ```sh
 $ npm run prisma migrate dev
 ```
 
-5. When you're ready, deploy your application:
+5. You will need to [add](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) the Database Connection strings to your environment variables, and it is always advisable to add them as secrets
 
 ```sh
-$ npx wrangler@latest deploy
+# When running this command, you will be prompted to input the secret’s value:
+
+$ npx wrangler secret put DIRECT_URL
+$ npx wrangler secret put DATABASE_URL
+```
+
+6. When you're ready, deploy your application:
+
+```sh
+$ npm run deploy
 ```
 
 _Note that if you haven't yet used Wrangler, you will be prompted to login to Cloudflare._
