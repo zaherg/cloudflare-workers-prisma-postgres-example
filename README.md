@@ -36,7 +36,7 @@ DIRECT_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=publi
 3. Update the `prisma/schema.prisma` file to include all the models you need.
 
 > [!note]
-> It is important that you have a look at the `script` section as it has multiple commands that will help you with your development.
+> It is important that you have a look at the `scripts` section as it has multiple commands that will help you with your development.
 
 4. Using Prisma's CLI, create a migration from changes in Prisma schema, apply it to the database, trigger generators (e.g. Prisma Client)
 
