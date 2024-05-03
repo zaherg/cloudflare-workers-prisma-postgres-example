@@ -5,3 +5,4 @@
 # .prettierrc
 package-lock.json
 worker-configuration.d.ts
+prisma/migrations/migration_lock.toml
