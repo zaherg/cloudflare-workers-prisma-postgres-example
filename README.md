@@ -1,5 +1,8 @@
 # cloudflare postgres prisma example
 
+> [!note]
+> This is an example to show how to use the mentioned tools, so use it as a reference to build your project.
+
 An example project showing how you can integrate [Prisma](https://www.prisma.io), [Cloudflare Workers](https://developers.cloudflare.com/workers) and [Supabase](https://supabase.com/) with [Hono](https://github.com/honojs/hono) framework to build awesome api backend.
 
 > [!TIP]
