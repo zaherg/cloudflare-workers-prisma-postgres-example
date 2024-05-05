@@ -52,8 +52,8 @@ $ npm run prisma migrate dev
 ```sh
 # When running this command, you will be prompted to input the secret’s value:
 
-$ npx wrangler secret put DIRECT_URL <value>
-$ npx wrangler secret put DATABASE_URL <value>
+$ npx wrangler secret put DIRECT_URL
+$ npx wrangler secret put DATABASE_URL
 ```
 
 6. When you're ready, deploy your application:
